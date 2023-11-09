@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-4 p-5"></div>
+    <div class="col-sm-4">
+         <form method="post" autocomplete="off" enctype="multipart/form-data">
+            {% csrf_token %}
+            Email<input type="email" name="email" required class="form-control" placeholder="Enter Your Email..."/>
+            Password<input type="password" name="passwd" required class="form-control" placeholder="Enter Your Email..."/>
+            <input type="submit" value="login" class="btn btn-dark"/>
+        </form>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+{% endblock %}

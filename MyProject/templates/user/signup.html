@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<style>
+    .form-control
+    {
+    margin-bottom:10px;
+    }
+     .bg
+    {
+    background-size:100%;
+    }
+    .ba
+    {
+    background:rgba(128,128,128,0.5);
+    }
+</style>
+<div class="row bg">
+    <div class="h2 text-center">Sign <b class="text-info">Up <i class="fa fa-sign-up"></i></b></div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 py-5 ba" style="border-radius:4px;">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            Name<input type="text" name="name" required class="form-control" placeholder="Enter YourName.."/>
+
+            Mobile<input type="number" name="mobile" required class="form-control"
+                         placeholder="Enter Your Mobile Number.."/>
+            Email<input type="email" name="email" required class="form-control" placeholder="Enter Your email id.."/>
+            Password<input type="password" name="passwd" required class="form-control"
+                           placeholder="Enter Your password.."/>
+            Profile Picture<input type="file" name="fu" required class="form-control"/>
+            Address
+            <textarea class="form-control" name="address" style="min-height:100px;resize:none"
+                      placeholder="Enter Your Address.."></textarea>
+            <input type="submit" value="Sign up"  class="btn btn-info w-100"/>
+
+        </form>
+    </div>
+    <div class="col-sm-4"></div>
+    <div class="row" style="height:200px;"></div>
+</div>
+{% endblock %}

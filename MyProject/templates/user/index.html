@@ -1,0 +1,119 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+<!--Slider-->
+<div class="row">
+    <div class="col-sm-12">
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/neckband.jpg' %}" class="d-block w-100" alt="neckband" height="600px">
+                </div>
+                <div class="carousel-item ">
+                    <img src="{% static 'images/neckband1.jpg' %}" class="d-block w-100" alt="neckband" height="600px">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/watch1.jpg' %}" class="d-block w-100" alt="watch" height="600px">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+</div>
+<!-- end slider -->
+<!-- Start category -->
+<div class="row category mt-4">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <div class="row">
+            {% if data %}
+            {% for x in data %}
+            <div class="col-sm-2 mx-3">
+                <div class="row bg-dark text-light">
+                    <div class=" col-sm-12 border p-2" style="min-width:200px">
+                        <img src="/{{x.cpic}}" style="min-width:200px;" class="img-thumbnail p-3" />
+                        <div class="h4 text-center">{{x.cname}}</div>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+            {% endif%}
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+
+<!-- end Category-->
+<!-- start newProduct-->
+<div class="row newproduct py-3">
+    <div class="h3 text-center">Our <b class="text-light">New Product <i class="fa fa-product-hunt"></i></b></div>
+    {% if prod %}
+    {% for x in prod %}
+    <div class="col-sm-2">
+        <div class="card w-100">
+            <img src="/{{x.ppic}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{x.category}}</h5>
+                <p class="fs-3">{{x.name}}</p>
+
+                <div style="height:25px;width:25px;border-radius:3px; background:{{x.color}};"></div>
+                <b>Rs. </b> <s>{{x.tprice}}/-</s></br> <b>{{x.disprice}}/-</b><br />
+
+                <a href="/user/viewdetails?msg={{x.id}}" class="btn btn-warning rounded">Buy Now</a>
+                <a href="/user/process?pid={{x.id}}&bn=cart" target="_blank" class="btn btn-warning rounded"><i
+                        class="fa fa-shopping-cart"> Cart</i></a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+</div>
+
+<!-- end newProduct  -->
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10 offer my-5 bg-light p-5">
+
+        <div class="row">
+            <div class="col-sm-4">
+                <b>01.</b>
+                <div class="fs-2">Sapphire Crystal</div>
+                <p>Known for obtaining a remarkable hardness (nearly as hard as a diamond). Has a high scratch
+                    resistance which makes it a perfect material for wristwatches.</p>
+                <b>02.</b>
+                <div class="fs-2 mt-3">Swiss Ronda Movement</div>
+                <p>Known for obtaining a remarkable hardness (nearly as hard as a diamond). Has a high scratch
+                    resistance which makes it a perfect material for wristwatches.</p>
+
+            </div>
+            <div class="col-sm-4">
+                <center>
+                    <img src="{% static 'images/w.png'%}" style="max-height:400px;" class="img-fluid" />
+                </center>
+            </div>
+            <div class="col-sm-4">
+                <b>03.</b>
+                <div class="fs-2">Sapphire Crystal</div>
+                <p>Known for obtaining a remarkable hardness (nearly as hard as a diamond). Has a high scratch
+                    resistance which makes it a perfect material for wristwatches.</p>
+                <b>04.</b>
+                <div class="fs-2 mt-3">Swiss Ronda Movement</div>
+                <p>Known for obtaining a remarkable hardness (nearly as hard as a diamond). Has a high scratch
+                    resistance which makes it a perfect material for wristwatches.</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+
+    {% endblock %}
